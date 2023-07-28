@@ -1,3 +1,3 @@
-import Header from './Background';
+import Background from './Background';
 
-export default Header;
+export default Background;
