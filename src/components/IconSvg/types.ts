@@ -1,1 +1,1 @@
-export type iconsName = 'openedEye' | 'closedEye' 
+export type iconsName = 'openedEye' | 'closedEye' | 'arrowBack';

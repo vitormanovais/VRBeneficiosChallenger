@@ -7,6 +7,7 @@ import {
 } from './InputFieldStyles';
 import {TouchableOpacity} from 'react-native';
 import IconSvg from '../IconSvg';
+import {InputFieldProps} from './types';
 
 const InputField: React.FC<InputFieldProps> = ({
   placeholder,
@@ -17,6 +18,7 @@ const InputField: React.FC<InputFieldProps> = ({
   password = false,
   error,
   labelColor,
+  maxLength,
 }) => {
   const [state, setState] = useState<string>(value ?? '');
   const [showPassword, setShowPassword] = useState<boolean>(password);
@@ -39,6 +41,7 @@ const InputField: React.FC<InputFieldProps> = ({
       )}
       <StyledInputContainer error={!!error}>
         <StyledInput
+          type="custom"
           error={!!error}
           secureTextEntry={showPassword}
           keyboardType={keyboardType}
@@ -46,6 +49,7 @@ const InputField: React.FC<InputFieldProps> = ({
           placeholder={error ? error : placeholder}
           onChangeText={handleTextChange}
           placeholderTextColor={error ? '#ff0000' : '#BBBBBB'}
+          maxLength={maxLength}
         />
         {password && (
           <TouchableOpacity onPress={handleTogglePasswordVisibility}>

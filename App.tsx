@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import RootNavigator from './src/pages/routes';
+import RootNavigator from './src/pages/routes/routes';
 import store from './src/contexts/redux';
 import {Provider} from 'react-redux';
 

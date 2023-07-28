@@ -10,5 +10,5 @@ export const StyledText = styled.Text`
 export const StyledContainer = styled.View`
   align-items: center;
   justify-content: center;
-  margin: 10px 16px;
+  margin: 5px 16px;
 `;

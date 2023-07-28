@@ -1,4 +1,4 @@
-interface InputFieldProps {
+export interface InputFieldProps {
   label?: string;
   value?: string;
   placeholder?: string;
@@ -8,8 +8,9 @@ interface InputFieldProps {
   error?: string;
   placeholderColor?: string;
   labelColor?: string;
+  maxLength?: number;
 }
-type keyboardType =
+export type keyboardType =
   | 'default'
   | 'numeric'
   | 'number-pad'
