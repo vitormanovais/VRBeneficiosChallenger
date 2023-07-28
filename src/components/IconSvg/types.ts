@@ -1,0 +1,1 @@
+export type iconsName = 'openedEye' | 'closedEye' 
