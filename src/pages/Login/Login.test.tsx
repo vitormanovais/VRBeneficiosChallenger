@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './Login';
-import {fireEvent, render, waitFor, act} from '@testing-library/react-native';
+import {fireEvent, render} from '@testing-library/react-native';
 
 describe('Login screen', () => {
   test('renders the correct buttons', () => {
