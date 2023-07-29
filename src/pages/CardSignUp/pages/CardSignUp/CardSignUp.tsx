@@ -1,10 +1,9 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
 import {Formik, FormikProps} from 'formik';
-import InputField from '../../components/InputField';
+import InputField from '../../../../components/InputField';
 import {CardProps, initialValues} from './types';
-import Button from '../../components/Button';
-import Header from '../../components/Header';
+import Button from '../../../../components/Button';
+import Header from '../../../../components/Header';
 import {
   StyledButtonContainer,
   StyledContainer,
@@ -12,11 +11,19 @@ import {
   StyledDualInputItem,
   StyledInputContainer,
 } from './CardSignUpStyles';
-import Background from '../../components/Backgound';
+import Background from '../../../../components/Backgound';
+import useCardsAPI from '../../hooks/useCreditCardsAPI';
+import {useNavigation} from '@react-navigation/native';
 
 const CardSignUp: React.FC = () => {
+  const {registerCreditCard} = useCardsAPI();
+  const navigation = useNavigation();
+
   const handleLogin = (values: CardProps) => {
-    console.log('Login realizado com sucesso!', values);
+    registerCreditCard(values);
+    navigation.navigate('Complete', {
+      card: values,
+    });
   };
 
   const validate = (values: CardProps) => {
@@ -61,7 +68,8 @@ const CardSignUp: React.FC = () => {
               <StyledInputContainer>
                 <InputField
                   label="número do cartão"
-                  placeholder=""
+                  mask="[0000] [0000] [0000] [0000]"
+                  keyboardType="number-pad"
                   value={values.number}
                   onChange={handleChange('number')}
                   labelColor="#BBBBBB"
@@ -70,7 +78,6 @@ const CardSignUp: React.FC = () => {
               <StyledInputContainer>
                 <InputField
                   label="nome do titular do cartão"
-                  placeholder=""
                   value={values.name}
                   onChange={handleChange('name')}
                   labelColor="white"
@@ -81,6 +88,8 @@ const CardSignUp: React.FC = () => {
                   <InputField
                     label="vencimento"
                     placeholder="00/00"
+                    mask="[00]/[00]"
+                    keyboardType="number-pad"
                     value={values.dueDate}
                     onChange={(text: string) => {
                       const formattedValue = text
@@ -98,13 +107,13 @@ const CardSignUp: React.FC = () => {
                       handleChange('dueDate')(formattedDate);
                     }}
                     labelColor="white"
-                    maxLength={5}
                   />
                 </StyledDualInputItem>
                 <StyledDualInputItem>
                   <InputField
                     label="código de segurança"
                     placeholder="***"
+                    keyboardType="number-pad"
                     value={values.cvv}
                     onChange={handleChange('cvv')}
                     labelColor="white"

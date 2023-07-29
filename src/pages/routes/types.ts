@@ -3,6 +3,12 @@ export type RootStackParamList = {
   CardSignUp: undefined;
   Portfolio: undefined;
 };
+
+export type SignUpParamList = {
+  SignUp: undefined;
+  Complete: undefined;
+};
+
 export interface CustonHeaderProps {
   text: string;
 }
