@@ -1,6 +1,7 @@
+import TextInputMask from 'react-native-text-input-mask';
 import styled from 'styled-components/native';
 
-export const StyledInput = styled.TextInput<{error: boolean}>`
+export const StyledInput = styled(TextInputMask)<{error: boolean}>`
   flex: 1;
   color: ${props => (props.error ? '#ff0000' : '#000')};
   font-size: 16px;

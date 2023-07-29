@@ -1,23 +1,16 @@
+import {KeyboardTypeOptions} from 'react-native';
+
 export interface InputFieldProps {
   label?: string;
   value?: string;
   placeholder?: string;
-  keyboardType?: keyboardType;
+  keyboardType?: KeyboardTypeOptions;
   onChange?: (text: string) => void;
   password?: boolean;
   error?: string;
   placeholderColor?: string;
   labelColor?: string;
   maxLength?: number;
+  mask?: string;
+  textContentType?: string;
 }
-export type keyboardType =
-  | 'default'
-  | 'numeric'
-  | 'number-pad'
-  | 'decimal-pad'
-  | 'email-address'
-  | 'phone-pad'
-  | 'ascii-capable'
-  | 'url'
-  | 'twitter'
-  | 'web-search';
