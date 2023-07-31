@@ -17,7 +17,9 @@ const Completed: React.FC = () => {
   return (
     <Background>
       <Header text="Wallet Test" />
-      <Card card={card} />
+      <StyledButtonContainer>
+        <Card card={card} />
+      </StyledButtonContainer>
       <StyledButtonContainer>
         <Button
           title="Avançar"
