@@ -1,13 +1,13 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
-import {CardData} from './types';
+import {CardData} from '../../contexts/redux/portfolio/types';
 
-const baseURL = 'http://192.168.0.113:3000/cards';
+const baseURL = 'http://192.168.15.142:3000/cards';
 
 const useCardsAPI = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<CardData[] | null>(null);
+  const [creditCardsData, setCreditCards] = useState<CardData[] | null>(null);
 
   const getCreditCards = async () => {
     setIsLoading(true);
@@ -15,12 +15,14 @@ const useCardsAPI = () => {
 
     try {
       const response = await axios.get(baseURL);
-      setData(response.data);
+      setCreditCards(response.data);
+      setIsLoading(false);
+      return response.data as CardData[];
     } catch (error) {
       setError('Erro ao buscar os cartões. Por favor, tente novamente.');
+      setIsLoading(false);
+      return [];
     }
-
-    setIsLoading(false);
   };
 
   const registerCreditCard = async (cardData: CardData) => {
@@ -29,7 +31,7 @@ const useCardsAPI = () => {
 
     try {
       const response = await axios.post(baseURL, cardData);
-      setData(prevData =>
+      setCreditCards(prevData =>
         prevData ? [...prevData, response.data] : [response.data],
       );
     } catch (error) {
@@ -39,7 +41,11 @@ const useCardsAPI = () => {
     setIsLoading(false);
   };
 
-  return {isLoading, error, data, getCreditCards, registerCreditCard};
+  useEffect(() => {
+    getCreditCards();
+  }, []);
+
+  return {isLoading, error, creditCardsData, registerCreditCard};
 };
 
 export default useCardsAPI;
