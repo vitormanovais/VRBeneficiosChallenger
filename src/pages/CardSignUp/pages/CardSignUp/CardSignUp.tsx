@@ -12,18 +12,26 @@ import {
   StyledInputContainer,
 } from './CardSignUpStyles';
 import Background from '../../../../components/Backgound';
-import useCardsAPI from '../../hooks/useCreditCardsAPI';
+import useCardsAPI from '../../../hooks/useCreditCardsAPI';
 import {useNavigation} from '@react-navigation/native';
+import {addCreditCard} from '../../../../contexts/redux/portfolio/actions';
+import {useDispatch} from 'react-redux';
 
 const CardSignUp: React.FC = () => {
-  const {registerCreditCard} = useCardsAPI();
+  const {error, registerCreditCard} = useCardsAPI();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const handleLogin = (values: CardProps) => {
-    registerCreditCard(values);
-    navigation.navigate('Complete', {
-      card: values,
-    });
+  const handleLogin = async (values: CardProps) => {
+    const data = await registerCreditCard(values);
+    if (data) {
+      dispatch(addCreditCard(data));
+      navigation.navigate('Complete', {
+        card: data,
+      });
+    } else {
+      console.log('tratar modal erro', error);
+    }
   };
 
   const validate = (values: CardProps) => {
@@ -58,7 +66,6 @@ const CardSignUp: React.FC = () => {
           values,
           errors,
         }: FormikProps<CardProps>) => {
-          console.log('errors', errors);
           const isFormValid = Object.keys(values).every(
             key => values[key as keyof CardProps] !== '',
           );

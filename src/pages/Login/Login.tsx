@@ -8,17 +8,18 @@ import useCardsAPI from '../hooks/useCreditCardsAPI';
 import {useDispatch, useSelector} from 'react-redux';
 import {ReduxType} from '../../contexts/redux/type';
 
-import portfolioActions from '../../contexts/redux/portfolio/actions';
+import {setCreditCards} from '../../contexts/redux/portfolio/actions';
 
 const Login: React.FC = () => {
   const {creditCards} = useSelector((state: ReduxType) => state.portfolio);
+  const dispatch = useDispatch();
+
   const {creditCardsData} = useCardsAPI();
   const navigation = useNavigation();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (creditCardsData) {
-      dispatch(portfolioActions.setCreditCards(creditCardsData));
+      dispatch(setCreditCards(creditCardsData));
     }
   }, [creditCardsData]);
 

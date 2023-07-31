@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import LoginScreen from '../Login';
+import PortfolioScreen from '../Portfolio';
 import CardSignUpScreen from '../CardSignUp/pages/CardSignUp';
 import CompletedScreen from '../CardSignUp/pages/Completed';
 import {CustonHeaderProps, RootStackParamList, SignUpParamList} from './types';
@@ -17,20 +18,42 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<SignUpParamList>();
 
-const CustonHeader: React.FC<CustonHeaderProps> = ({text}) => {
+const CustonHeader: React.FC<CustonHeaderProps> = ({
+  text,
+  custonRightButton,
+}) => {
   const navigation = useNavigation();
 
-  const handleNavigateToCardSignUp = () => {
+  const goBack = () => {
     navigation.goBack();
   };
-  console.log('GOBACK');
+
+  const handlerNavigation = (target: string) => {
+    navigation.navigate(target as never);
+  };
+
   return (
     <>
-      <StyledBackButton onPress={handleNavigateToCardSignUp}>
-        <IconSvg name="arrowBack" width={21} height={21} color="#12C2E9" />
-      </StyledBackButton>
       <StyledContainer>
+        <StyledBackButton onPress={goBack}>
+          <IconSvg name="arrowBack" width={21} height={21} color="#12C2E9" />
+        </StyledBackButton>
         <StyledText>{text}</StyledText>
+        <StyledBackButton
+          onPress={() =>
+            custonRightButton
+              ? handlerNavigation(custonRightButton.action)
+              : () => false
+          }>
+          {custonRightButton && (
+            <IconSvg
+              name={custonRightButton.icon}
+              width={21}
+              height={21}
+              color="#12C2E9"
+            />
+          )}
+        </StyledBackButton>
       </StyledContainer>
     </>
   );
@@ -38,23 +61,13 @@ const CustonHeader: React.FC<CustonHeaderProps> = ({text}) => {
 
 const SignUpSteps = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="SignUp"
-        component={CardSignUpScreen}
-        options={{
-          header: () => <CustonHeader text="cadastro" />,
-          headerTransparent: true,
-        }}
-      />
-      <Tab.Screen
-        name="Complete"
-        component={CompletedScreen}
-        options={{
-          header: () => <CustonHeader text="cadastro1" />,
-          headerTransparent: true,
-        }}
-      />
+    <Tab.Navigator
+      screenOptions={{
+        header: () => <CustonHeader text="cadastro" />,
+        headerTransparent: true,
+      }}>
+      <Tab.Screen name="SignUp" component={CardSignUpScreen} />
+      <Tab.Screen name="Complete" component={CompletedScreen} />
     </Tab.Navigator>
   );
 };
@@ -73,7 +86,21 @@ const RootNavigator = () => {
           component={SignUpSteps}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen name="Portfolio" component={SignUpSteps} /> */}
+        <Stack.Screen
+          name="Portfolio"
+          component={PortfolioScreen}
+          options={{
+            header: () => (
+              <CustonHeader
+                text="Wallet Test"
+                custonRightButton={{
+                  action: 'CardSignUp',
+                  icon: 'more',
+                }}
+              />
+            ),
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

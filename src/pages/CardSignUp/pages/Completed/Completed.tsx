@@ -3,9 +3,9 @@ import Button from '../../../../components/Button';
 import Header from '../../../../components/Header';
 import {StyledButtonContainer} from './CompletedStyles';
 import Background from '../../../../components/Backgound';
-import {CardData} from '../../hooks/types';
 import Card from '../../../../components/Card';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {CardData} from '../../../../contexts/redux/portfolio/types';
 
 interface CompletedProps {
   card: CardData;
@@ -14,6 +14,16 @@ interface CompletedProps {
 const Completed: React.FC = () => {
   const route = useRoute();
   const {card} = route.params as CompletedProps;
+  const navigation = useNavigation();
+
+  const handleNavigate = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'SignUp'}],
+    });
+    navigation.navigate('Portfolio' as never);
+  };
+
   return (
     <Background>
       <Header text="Wallet Test" />
@@ -23,7 +33,7 @@ const Completed: React.FC = () => {
       <StyledButtonContainer>
         <Button
           title="Avançar"
-          onPress={() => false}
+          onPress={handleNavigate}
           type="blue"
           testId="submitButton"
         />

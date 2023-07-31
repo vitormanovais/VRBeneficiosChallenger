@@ -1,4 +1,4 @@
-import {CardData} from '../../pages/CardSignUp/hooks/types';
+import {CardData} from '../../contexts/redux/portfolio/types';
 import {
   InfoContainer,
   InfoContainerData,
