@@ -13,19 +13,21 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({card}) => {
-  const {number, name, dueDate} = card;
+  const {number, name, dueDate, type = 'black'} = card;
   const protectNumber = number.replace(' ', '').slice(-4);
 
   return (
-    <StyledContainer>
+    <StyledContainer type={type}>
       <InfoContainer>
         <InfoContainerHeader>
-          <StyledTextHeader>Black Card</StyledTextHeader>
+          <StyledTextHeader type={type}>
+            {card.type === 'black' ? 'Black' : 'Green'} Card
+          </StyledTextHeader>
         </InfoContainerHeader>
         <InfoContainerData>
-          <StyledText>{name}</StyledText>
-          <StyledText> •••• •••• •••• {protectNumber}</StyledText>
-          <StyledText>Validade {dueDate}</StyledText>
+          <StyledText type={type}>{name}</StyledText>
+          <StyledText type={type}> •••• •••• •••• {protectNumber}</StyledText>
+          <StyledText type={type}>Validade {dueDate}</StyledText>
         </InfoContainerData>
       </InfoContainer>
     </StyledContainer>

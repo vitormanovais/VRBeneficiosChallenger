@@ -29,26 +29,28 @@ const Login: React.FC = () => {
 
   return (
     <Background>
-      <Header text="Wallet Test" />
-      <StyledButtonsContainer>
-        <StyledButtonContainer>
-          <Button
-            title="meus cartões"
-            onPress={() => handleNavigate('Portfolio')}
-            testId="myCardButton"
-            type={'blue'}
-            disabled={creditCards.length <= 0}
-          />
-        </StyledButtonContainer>
-        <StyledButtonContainer>
-          <Button
-            title="cadastrar cartão"
-            onPress={() => handleNavigate('CardSignUp')}
-            testId="addCardButton"
-            type={'green'}
-          />
-        </StyledButtonContainer>
-      </StyledButtonsContainer>
+      <>
+        <Header text="Wallet Test" />
+        <StyledButtonsContainer>
+          <StyledButtonContainer>
+            <Button
+              title="meus cartões"
+              onPress={() => handleNavigate('Portfolio')}
+              testId="myCardButton"
+              type={'blue'}
+              disabled={creditCards.length <= 0}
+            />
+          </StyledButtonContainer>
+          <StyledButtonContainer>
+            <Button
+              title="cadastrar cartão"
+              onPress={() => handleNavigate('CardSignUp')}
+              testId="addCardButton"
+              type={'green'}
+            />
+          </StyledButtonContainer>
+        </StyledButtonsContainer>
+      </>
     </Background>
   );
 };

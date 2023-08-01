@@ -14,7 +14,9 @@ export type SignUpParamList = {
 
 export interface CustonHeaderProps {
   text: string;
+  textColor?: string;
   custonRightButton?: customButton;
+  backgroundColor?: string;
 }
 
 export interface customButton {

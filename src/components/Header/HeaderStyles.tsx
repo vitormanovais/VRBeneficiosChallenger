@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const StyledText = styled.Text`
   font-size: 28px;
   line-height: 32px;
-  font-family: PT Sans Caption;
+  font-family: PTSans-Bold;
   color: #ffff;
 `;
 

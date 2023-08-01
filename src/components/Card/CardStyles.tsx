@@ -1,28 +1,28 @@
 import styled from 'styled-components/native';
+import {CardType} from '../../contexts/redux/portfolio/types';
 
-export const StyledText = styled.Text`
+export const StyledText = styled.Text<{type: CardType}>`
   font-size: 16px;
   line-height: 18px;
-  font-family: PT Sans Caption;
-  color: #ffff;
+  font-family: PTSans-Regular;
+  color: ${props => (props.type === 'black' ? '#fff' : '#3F3F3F')};
 `;
 
-export const StyledTextHeader = styled.Text`
+export const StyledTextHeader = styled.Text<{type: CardType}>`
   font-size: 18px;
   line-height: 20px;
-  font-family: PT Sans;
-  color: #ffff;
+  font-family: PTSans-Regular;
+  color: ${props => (props.type === 'black' ? '#fff' : '#3F3F3F')};
 `;
 
-export const StyledContainer = styled.View`
-  background-color: #000;
+export const StyledContainer = styled.View<{type: CardType}>`
+  background-color: ${props => (props.type === 'black' ? '#000' : '#A5FF32')};
   border-radius: 16px;
   padding: 25px 10px;
 `;
 
 export const InfoContainer = styled.View`
   align-items: flex-start;
-  border-radius: 16px;
   padding: 5px;
 `;
 

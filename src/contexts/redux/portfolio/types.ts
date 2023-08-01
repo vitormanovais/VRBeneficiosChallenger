@@ -8,7 +8,10 @@ export interface CardData {
   cvv: string;
   name: string;
   dueDate: string;
+  type?: CardType;
 }
+
+export type CardType = 'green' | 'black';
 
 export enum PortfolioActionTypes {
   PORTFOLIO_SET_CREDIT_CARD = 'PORTFOLIO_SET_CREDIT_CARD',

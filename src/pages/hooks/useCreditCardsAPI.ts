@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {CardData} from '../../contexts/redux/portfolio/types';
+import {getRandomCardType} from './utils';
 
-const baseURL = 'http://192.168.15.142:3000/cards';
+const baseURL = 'http://192.168.0.103:3000/cards';
 
 const useCardsAPI = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,9 +29,10 @@ const useCardsAPI = () => {
   const registerCreditCard = async (cardData: CardData) => {
     setIsLoading(true);
     setError(null);
+    const type = getRandomCardType();
 
     try {
-      const response = await axios.post(baseURL, cardData);
+      const response = await axios.post(baseURL, {...cardData, type});
       return response.data;
     } catch (error) {
       setError('Erro ao enviar o cartão. Por favor, tente novamente.');

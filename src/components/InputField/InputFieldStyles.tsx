@@ -30,7 +30,7 @@ export const StyledContainer = styled.View`
 export const StyledLabel = styled.Text<{color: string}>`
   font-size: 14px;
   line-height: 29px;
-  font-family: PT Sans;
+  font-family: PTSans-Regular;
   color: ${props => props.color};
   margin-bottom: 4px;
 `;

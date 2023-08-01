@@ -1,15 +1,15 @@
 import {RotatedView, StyledContainer} from './BackgroundStyles';
-import React, {ReactNode} from 'react';
+import React from 'react';
 
 interface BackgroundProps {
-  children: React.FC | ReactNode;
+  children: JSX.Element;
 }
 
 const Background: React.FC<BackgroundProps> = ({children}) => (
   <StyledContainer>
     <RotatedView rotation={-39.93} bottom={'-10%'} left={'30%'} />
-    {children}
     <RotatedView rotation={144.57} bottom={'82%'} left={'-26%'} />
+    {children}
   </StyledContainer>
 );
 

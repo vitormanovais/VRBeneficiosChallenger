@@ -14,6 +14,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-VRChallenger-VRChallengerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-VRChallenger-VRChallengerTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		2E7F9DD31A5B429A89409CD9 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 483FFCCC5DC844FC98D53468 /* PTSans-Bold.ttf */; };
+		E03C9685E7F443DDA28F61FB /* PTSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9848382DCA374734949BED2B /* PTSans-BoldItalic.ttf */; };
+		95A6639A171048A586255F5B /* PTSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3F5C8D2BE0041DBA5A76F64 /* PTSans-Italic.ttf */; };
+		37C81F9E1E9A41358108FA49 /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E31B56531E8A484A99D3098C /* PTSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = VRChallenger/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-VRChallenger-VRChallengerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VRChallenger-VRChallengerTests.release.xcconfig"; path = "Target Support Files/Pods-VRChallenger-VRChallengerTests/Pods-VRChallenger-VRChallengerTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		483FFCCC5DC844FC98D53468 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; name = "PTSans-Bold.ttf"; path = "../assets/fonts/PTSans/PTSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9848382DCA374734949BED2B /* PTSans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "PTSans-BoldItalic.ttf"; path = "../assets/fonts/PTSans/PTSans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D3F5C8D2BE0041DBA5A76F64 /* PTSans-Italic.ttf */ = {isa = PBXFileReference; name = "PTSans-Italic.ttf"; path = "../assets/fonts/PTSans/PTSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E31B56531E8A484A99D3098C /* PTSans-Regular.ttf */ = {isa = PBXFileReference; name = "PTSans-Regular.ttf"; path = "../assets/fonts/PTSans/PTSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				8810FE0AFB6943CAAB930E05 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +156,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		8810FE0AFB6943CAAB930E05 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				483FFCCC5DC844FC98D53468 /* PTSans-Bold.ttf */,
+				9848382DCA374734949BED2B /* PTSans-BoldItalic.ttf */,
+				D3F5C8D2BE0041DBA5A76F64 /* PTSans-Italic.ttf */,
+				E31B56531E8A484A99D3098C /* PTSans-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +265,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				2E7F9DD31A5B429A89409CD9 /* PTSans-Bold.ttf in Resources */,
+				E03C9685E7F443DDA28F61FB /* PTSans-BoldItalic.ttf in Resources */,
+				95A6639A171048A586255F5B /* PTSans-Italic.ttf in Resources */,
+				37C81F9E1E9A41358108FA49 /* PTSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

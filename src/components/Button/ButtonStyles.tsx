@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const StyledText = styled.Text<{color: string}>`
   font-size: 18px;
   line-height: 35px;
-  font-family: PT Sans;
+  font-family: PTSans-Regular;
   color: ${props => props.color};
 `;
 

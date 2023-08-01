@@ -26,18 +26,20 @@ const Completed: React.FC = () => {
 
   return (
     <Background>
-      <Header text="Wallet Test" />
-      <StyledButtonContainer>
-        <Card card={card} />
-      </StyledButtonContainer>
-      <StyledButtonContainer>
-        <Button
-          title="Avançar"
-          onPress={handleNavigate}
-          type="blue"
-          testId="submitButton"
-        />
-      </StyledButtonContainer>
+      <>
+        <Header text="Wallet Test" />
+        <StyledButtonContainer>
+          <Card card={card} />
+        </StyledButtonContainer>
+        <StyledButtonContainer>
+          <Button
+            title="Avançar"
+            onPress={handleNavigate}
+            type="blue"
+            testId="submitButton"
+          />
+        </StyledButtonContainer>
+      </>
     </Background>
   );
 };
