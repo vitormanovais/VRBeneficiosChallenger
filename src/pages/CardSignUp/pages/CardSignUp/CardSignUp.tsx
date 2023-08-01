@@ -12,47 +12,10 @@ import {
   StyledInputContainer,
 } from './CardSignUpStyles';
 import Background from '../../../../components/Backgound';
-import useCardsAPI from '../../../hooks/useCreditCardsAPI';
-import {useNavigation} from '@react-navigation/native';
-import {addCreditCard} from '../../../../contexts/redux/portfolio/actions';
-import {useDispatch} from 'react-redux';
+import {useRegisterCardForm} from './useRegisterCardForm';
 
 const CardSignUp: React.FC = () => {
-  const {error, registerCreditCard} = useCardsAPI();
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
-
-  const handleRegister = async (values: CardProps) => {
-    const data = await registerCreditCard(values);
-    if (data) {
-      dispatch(addCreditCard(data));
-      navigation.navigate('Complete', {
-        card: data,
-      });
-    } else {
-      console.log('tratar modal erro', error);
-    }
-  };
-
-  const validate = (values: CardProps) => {
-    const errors: Partial<CardProps> = {};
-
-    if (!values.number) {
-      errors.number = 'Invalid number';
-    }
-    if (!values.name) {
-      errors.name = 'Invalid name';
-    }
-    if (!values.dueDate) {
-      errors.dueDate = 'Invalid dueDate';
-    }
-    if (!values.cvv) {
-      errors.cvv = 'Invalid cvv';
-    }
-
-    return errors;
-  };
-
+  const {handleRegister, validate} = useRegisterCardForm();
   return (
     <Background>
       <>
@@ -67,9 +30,9 @@ const CardSignUp: React.FC = () => {
             values,
             errors,
           }: FormikProps<CardProps>) => {
-            const isFormValid = Object.keys(values).every(
-              key => values[key as keyof CardProps] !== '',
-            );
+            const isFormValid = Object.keys(errors).every(key => {
+              return errors[key as keyof CardProps] === '';
+            });
 
             return (
               <>
@@ -81,6 +44,7 @@ const CardSignUp: React.FC = () => {
                     value={values.number}
                     onChange={handleChange('number')}
                     labelColor="#BBBBBB"
+                    error={values.number && errors.number}
                   />
                 </StyledInputContainer>
                 <StyledInputContainer>
@@ -89,6 +53,7 @@ const CardSignUp: React.FC = () => {
                     value={values.name}
                     onChange={handleChange('name')}
                     labelColor="white"
+                    error={values.name && errors.name}
                   />
                 </StyledInputContainer>
                 <StyledDualInputContainer>
@@ -99,6 +64,7 @@ const CardSignUp: React.FC = () => {
                       mask="[00]/[00]"
                       keyboardType="number-pad"
                       value={values.dueDate}
+                      error={values.dueDate && errors.dueDate}
                       onChange={(text: string) => {
                         const formattedValue = text
                           .replace(/\D/g, '')
@@ -126,6 +92,7 @@ const CardSignUp: React.FC = () => {
                       onChange={handleChange('cvv')}
                       labelColor="white"
                       maxLength={3}
+                      error={values.cvv && errors.cvv}
                     />
                   </StyledDualInputItem>
                 </StyledDualInputContainer>

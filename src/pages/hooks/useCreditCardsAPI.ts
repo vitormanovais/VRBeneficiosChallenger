@@ -33,13 +33,13 @@ const useCardsAPI = () => {
 
     try {
       const response = await axios.post(baseURL, {...cardData, type});
+      setIsLoading(false);
       return response.data;
     } catch (error) {
       setError('Erro ao enviar o cartão. Por favor, tente novamente.');
+      setIsLoading(false);
       return false;
     }
-
-    setIsLoading(false);
   };
 
   useEffect(() => {
