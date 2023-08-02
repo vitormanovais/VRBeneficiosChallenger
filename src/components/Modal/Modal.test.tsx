@@ -1,13 +1,13 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import HeaderT from './index';
+import Modal from './Modal';
+import {ModalContent, CloseButton, ModalText} from './ModalStyles';
 
-describe('Header component', () => {
-  test('renders header component with provided text', () => {
-    const text = 'Testing header component';
-    const {getByText} = render(<HeaderT text={text} />);
+describe('Modal Component', () => {
+  test('renders modal content correctly', () => {
+    const {getByText} = render(<Modal />);
 
-    const headerText = getByText(text);
-    expect(headerText).toBeTruthy();
+    const modalText = getByText('Seu conteúdo aqui');
+    expect(modalText).toBeTruthy();
   });
 });

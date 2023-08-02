@@ -45,6 +45,7 @@ const CardSignUp: React.FC = () => {
                     onChange={handleChange('number')}
                     labelColor="#BBBBBB"
                     error={values.number && errors.number}
+                    testId={'test-number'}
                   />
                 </StyledInputContainer>
                 <StyledInputContainer>
@@ -54,6 +55,7 @@ const CardSignUp: React.FC = () => {
                     onChange={handleChange('name')}
                     labelColor="white"
                     error={values.name && errors.name}
+                    testId={'test-name'}
                   />
                 </StyledInputContainer>
                 <StyledDualInputContainer>
@@ -81,6 +83,7 @@ const CardSignUp: React.FC = () => {
                         handleChange('dueDate')(formattedDate);
                       }}
                       labelColor="white"
+                      testId={'test-dueDate'}
                     />
                   </StyledDualInputItem>
                   <StyledDualInputItem>
@@ -93,6 +96,7 @@ const CardSignUp: React.FC = () => {
                       labelColor="white"
                       maxLength={3}
                       error={values.cvv && errors.cvv}
+                      testId={'test-cvv'}
                     />
                   </StyledDualInputItem>
                 </StyledDualInputContainer>

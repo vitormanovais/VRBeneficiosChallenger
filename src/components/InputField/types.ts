@@ -13,4 +13,5 @@ export interface InputFieldProps {
   maxLength?: number;
   mask?: string;
   textContentType?: string;
+  testId?: string;
 }

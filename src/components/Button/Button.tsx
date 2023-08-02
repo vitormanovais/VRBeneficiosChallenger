@@ -18,7 +18,7 @@ const getColor = (type: color) => {
     case 'green':
       return {color: '#142995', backgroundColor: '#A5FF32'};
     case 'white':
-      return {color: '#00000', backgroundColor: '#FFFFFF'};
+      return {color: '#000', backgroundColor: '#FFFFFF'};
   }
 };
 

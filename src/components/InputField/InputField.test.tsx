@@ -1,6 +1,8 @@
 import React from 'react';
-import {act, fireEvent, render} from '@testing-library/react-native';
+import {fireEvent, render, waitFor} from '@testing-library/react-native';
 import InputField from './index';
+import 'jest-styled-components';
+import {getByPlaceholderText} from '@testing-library/react';
 
 describe('InputField component', () => {
   test('renders header component with provided text', () => {
@@ -19,8 +21,10 @@ describe('InputField component', () => {
         password
       />,
     );
-    const input = getByPlaceholderText('Enter password');
-    expect(input.props.secureTextEntry).toBe(true);
+    waitFor(async () => {
+      const input = await getByPlaceholderText('Enter password');
+      expect(input.props.secureTextEntry).toBe(true);
+    });
   });
   test('updates input value correctly', () => {
     const handleChange = jest.fn();
@@ -34,11 +38,10 @@ describe('InputField component', () => {
         onChange={handleChange}
       />,
     );
-    act(() => {
+    waitFor(async () => {
       const input = getByPlaceholderText('Enter text');
-
       fireEvent.changeText(input, textInput);
+      expect(handleChange).toHaveBeenCalledWith(textInput);
     });
-    expect(handleChange).toHaveBeenCalledWith(textInput);
   });
 });

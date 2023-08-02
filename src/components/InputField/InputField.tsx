@@ -13,7 +13,6 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder,
   label,
   value,
-  textContentType,
   keyboardType = 'default',
   onChange,
   password = false,
@@ -21,6 +20,7 @@ const InputField: React.FC<InputFieldProps> = ({
   labelColor,
   maxLength,
   mask,
+  testId,
 }) => {
   const [state, setState] = useState<string>(value ?? '');
   const [showPassword, setShowPassword] = useState<boolean>(password);
@@ -52,6 +52,7 @@ const InputField: React.FC<InputFieldProps> = ({
           onChangeText={handleTextChange}
           placeholderTextColor={error ? '#ff0000' : '#BBBBBB'}
           maxLength={maxLength}
+          testID={testId}
         />
         {password && (
           <TouchableOpacity onPress={handleTogglePasswordVisibility}>
